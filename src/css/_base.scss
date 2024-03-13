@@ -1,0 +1,46 @@
+
+//Variabler
+/* Light Mode: */
+$lightmode-background: #eef0e5;
+$lightmode-green: #3a4d39;
+$lightmode-footer-bg: #505f4d;
+
+/* Dark mode: */
+$darkmode-background: #10141e;
+$darkmode-text: #2a4453;
+$darkmode-mid: #3d424c;
+$darkmode-footer-bg: #4f5b79;
+
+/* Text-relaterat */
+$breadfont: Montserrat, Helvetica, sans-serif;
+$accentfont: Inconsolata, Helvetica, sans-serif;
+$headingfont: Montserrat, Helvetica, sans-serif;
+
+
+//Mixins
+
+/* Mixin för att centrera saker  */
+@mixin center($horizontal, $vertical) {
+    @if $horizontal and $vertical {
+        position: relative;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    } @else if $vertical {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    } @else if $horizontal {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+/* Mixin för transition med vendor prefixes (jag tror inte man behöver det, men är osäker, så de får vara med ändå) */
+@mixin transition {
+    transition: 0.8s ease;
+    -webkit-transition: 0.8s ease;
+    -moz-transition: 0.8s ease;
+}
+

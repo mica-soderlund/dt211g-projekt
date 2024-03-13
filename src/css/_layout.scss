@@ -1,0 +1,198 @@
+
+@use 'base';
+
+/* HEADER */
+header {
+    width: 100%;
+    position: relative;
+    img {
+        width: 100%;
+    }
+    .header-flex {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        position: absolute;
+        top: 0;
+        /* Specifikt för landing page: */
+        img#logotyp {
+            max-width: 40%;
+            width: 200px; /* För Firefox */
+            margin: 0.5em;
+            position: relative;
+            z-index: 2;
+        }
+    }
+    /* DESKTOP NAV */
+    nav.desktop {
+        width: 56%;
+
+        ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5em 1em 0.5em 0.5em;
+            border-radius: 10px 0 0 10px;
+            @include base.transition;
+
+            &:hover {
+                /* hover-effekt så meny fpr mörkare bakgrund */
+                background-color: rgba(0, 0, 0, 0.2);
+            }
+        }
+        .desktop-menu-item {
+            font-family: base.$accentfont;
+            font-size: 1.1em;
+            a {
+                /* Länkarna i list */
+                text-decoration: none;
+                color: base.$lightmode-background;
+                padding: 0.8em;
+                position: relative; 
+                text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
+            }
+            a:after {
+                content: '';
+                width: 0%;
+                height: 3px;
+                background-color: base.$lightmode-background;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                @include base.transition;
+            }
+            a:hover:after {
+                width: 100%;
+            }
+            a[aria-current='page']:after {
+                content: '';
+                width: 100%;
+                height: 3px;
+                background-color: base.$lightmode-background;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+            }
+        }
+    }
+    /* MOBILe nav  */
+    div.mobile-menu {
+        /* Dölj i desktopläge */
+        display: none;
+        .burger-button {
+            border: none;
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0);
+            position: relative;
+            top: 1.5em;
+            right: 2em;
+            z-index: 2;
+
+            &:hover .burger-bar {
+                background-color: lighten(base.$lightmode-green, 10%);
+            }
+        }
+        .burger-bar {
+            display: block;
+            width: 40px;
+            height: 3px;
+            margin: 5px;
+            background-color: black;
+            @include base.transition;
+        }
+
+        /* Aktiv hamburger */
+        .burger-button.active .burger-bar {
+            background-color: base.$lightmode-green;
+        }
+        .burger-button.active:hover .burger-bar {
+            background-color: lighten(base.$lightmode-green, 10%);
+        }
+        /* Rotera första och tredje, dölj mittersta */
+        .burger-button.active .burger-bar:first-child {
+            transform: translateY(8px) rotate(225deg);
+        }
+        .burger-button.active .burger-bar:nth-child(2) {
+            opacity: 0;
+        }
+        .burger-button.active .burger-bar:last-child {
+            transform: translateY(-8px) rotate(-225deg);
+        }
+        /* Ul-element får regler och skickas ut till höger för att döljas när den är inaktiv */
+        nav.mobile-menu-items {
+            height: fit-content;
+            width: 100%;
+            border-radius: 0 0 50% 50%;
+            position: fixed;
+            left: 0;
+            top: -505%;
+            background-color: base.$lightmode-background;
+            @include base.transition;
+
+            .mobile-menu-item {
+                font-family: base.$accentfont;
+                font-size: 1.1em;
+
+                margin: 5em 50%;
+                li {
+                    margin-top: 3em;
+                }
+                a {
+                    color: base.$lightmode-green;
+                    position: relative;
+                    padding: 0.5em 0;
+                }
+                a[aria-current='page']:after {
+                    content: '';
+                    width: 100%;
+                    height: 3px;
+                    background-color: base.$lightmode-green;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                }
+            }
+        }
+        nav.mobile-menu-items.active {
+            top: 0;
+            z-index: 1;
+        }
+    }
+}
+
+
+// Definiera några grundläggande variabler för din design
+$background-color: #0a0a22;
+$text-color: #fff;
+$highlight-color: #ffffff;
+
+body {
+  background-color: $background-color;
+  color: $text-color;
+  font-family: Montserrat, Helvetica, sans-serif;
+}
+
+h1, h2 {
+  color: $highlight-color;
+}
+
+section {
+  margin-bottom: 20px;
+}
+
+#apod-content, #satellite-content {
+  margin-top: 10px;
+}
+
+#background img {
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(30%)
+}

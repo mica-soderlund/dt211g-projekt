@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Explore Space </title>
+  <link href="/src/css/stylesheet.css" rel="stylesheet">  <!-- MÅSTE matcha kompilerad CSS-fil SASS -->
+  <link rel="stylesheet" href="/src/css/main.scss" />
+  <script src="/src/js/main.js" type="module"></script>
+  <!--<link rel="icon" type="image/x-icon" href="/bilder/favicon.ico"> lägg till favicon /bilder/favicon.ico-->
+</head>
+<body>
+    <div class="wrapper" id="landingpage">
+    <header>
+        <div class="header-flex">
+            <!--<a href='/'><img src="...../.svg" alt="Logotyp" id="logotyp">  lägg till logotyp .svg -->
+            </a>
+            <!-- header-nav desktop -->
+            <nav class="desktop">
+                <ul>
+                    <li class="desktop-menu-item">
+                        <a aria-current='page' href='/'>Start</a>
+                    </li>
+                    <li class="desktop-menu-item">
+                        <a href='/src/about.html'>Picture</a>
+                    </li>
+                    <li class="desktop-menu-item">
+                        <a href='/src/contact.html'>Contact</a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- header-nav mobile hamburger-->
+            <div class="mobile-menu">
+                <button class="burger-button" aria-label="menyknapp">
+                    <span class="burger-bar"></span>
+                    <span class="burger-bar"></span>
+                    <span class="burger-bar"></span>
+                </button>
+                <nav class="mobile-menu-items">
+                    <ul>
+                            <li class="mobile-menu-item">
+                                <a aria-current='page' href='/'>Start</a>
+                            </li>
+                            <li class="mobile-menu-item">
+                                <a href='/src/about.html'>Picture</a>
+                            </li>
+                            <li class="mobile-menu-item">
+                                <a href='/src/contact.html'>Kontakt</a>
+                            </li>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    <picture id="background">
+    <source type="image/jpeg" media="(min-width: 1201px)" srcset="/bilder/background_large.jpg" width="1920"
+    height="1080">
+<source type="image/webp" media="(min-width: 701px) and (max-width: 1200px)" srcset="/bilder/background_small.webp"
+    width="1200" height="900">
+</picture>
+
+    </header>
+    <main>
+        <br><br><br><br><br><br>
+        <h1>Explore Space Now</h1><br>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search in Space...">
+            <button id="searchButton">Search</button>
+        </div>
+        <section id="planetInfo">
+            <h2>Space Information from Wikipedia</h2>
+            <!-- Information från sökningen visas här -->
+        </section>
+        <section id="planetImages">
+            <h2>Space Images from NASA</h2>
+            <!-- NASA-Bilder relaterat till sökningen visas här -->
+        </section>
+
+    </main>
+    <br><br><br><br><br><br>
+    <footer>
+        <p>© 2024 Space Explorers </p>
+        <a href="https://www.freepik.com/free-photo/beautiful-shining-stars-night-sky_7631083.htm#query=space&position=3&from_view=keyword&track=sph&uuid=0a7acb9c-5fbe-49ef-b1d5-e02da9f91287">Background image</a> by wirestock on Freepik
+    </footer>
+    </div>
+</body>
+</html>
