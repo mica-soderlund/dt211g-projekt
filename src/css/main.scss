@@ -22,9 +22,10 @@
     min-height: 100vh;
     background-size: cover;
     background-position: center;
+    background-image: url('/bilder/background_small.webp'); 
   
     @media (min-width: 701px) and (max-width: 1200px) {
-      background-image: url('/bilder/background_small.webp');
+      background-image: url('/bilder/background_large.jpg');
     }
     @media (min-width: 1201px) {
       background-image: url('/bilder/background_large.jpg');

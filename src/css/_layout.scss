@@ -15,7 +15,7 @@ body {
     align-items: center;
     height: $header-height;
     padding: 0 20px;
-    background: #121212;
+    background-color: rgba(18, 18, 18, 0.5); // Semi-transparent bakgrund
   }
   
   .desktop-menu ul {
@@ -53,7 +53,7 @@ body {
     top: $header-height;
     right: 0;
     width: 250px;
-    background: #121212;
+    background-color: rgba(18, 18, 18, 0.5); // Semi-transparent bakgrund
     transform: translateX(100%);
     transition: transform 0.3s ease;
     padding: 20px 0;
@@ -248,11 +248,13 @@ h2 {
         font-family: base.$breadfont;
         border-radius: 30px;
         box-shadow: 0 0 15px rgba(134, 120, 176, 0.4);
+        background-color: rgba(255, 255, 255, 0.708);
 
-        &:hover {
-            background: linear-gradient(145deg, #d0d7db, rgb(50, 52, 80));
-            box-shadow: 0 0 20px rgba(233, 233, 239, 0.742);
-          }
+      &:hover {
+        color: #ffffff;
+        background: linear-gradient(145deg, #0099ff, rgb(50, 52, 80));
+        box-shadow: 0 0 20px rgba(8, 0, 255, 0.6);
+        }
       }
       
       .imageRotateHorizontal {
@@ -264,7 +266,7 @@ h2 {
 
 /* FOOTER STYLING */
 footer {
-    background-color: #121212; /* Matchar sökknappens bakgrundsfärg */
+    background-color: rgba(18, 18, 18, 0.5); // Semi-transparent bakgrund
     text-align: center;
     padding: em 0;
 }
