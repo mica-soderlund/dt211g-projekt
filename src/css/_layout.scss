@@ -156,7 +156,7 @@ h2 {
     color: base.$lightmode-text;
 }
 
-/* Sätt maxbredd på allt textinnehåll som genereras via JS-API */
+//Sätt maxbredd på allt textinnehåll som genereras via JS-API 
 .subtitle {
     text-align: center;
     font-weight: 500;
@@ -180,10 +180,27 @@ h2 {
             margin-top: 2em;
         }
     }
-}
+  }
+
+  //styling text på ABOUT US
+  .text-about {
+    background-color: rgba(255, 255, 255, 0.818); // Semi-transparent vit bakgrund
+    padding: 1em; 
+    border-radius: 10px; 
+    p {
+      color: #000000;
+    }
+    h2{
+      color: #000000;
+    }
+    h3{
+      color: #000000;
+    }
+    
+  }
 
 
-/* SÖKFUNKTIONEN - SEARCH - STYLING */
+// SÖKFUNKTIONEN - SEARCH - STYLING 
     .search-container {
         width: 75%;
         margin: 2em auto;
@@ -243,6 +260,7 @@ h2 {
         margin: auto; 
         position: relative; 
       }
+
 
 /* FOOTER STYLING */
 footer {

@@ -1,7 +1,7 @@
 
 require('dotenv').config();
 
-//  NASA API-nyckel via .env
+//  Säkerhet för NASA API-nyckel via .env
 const nasaApiKey = process.env.VITE_NASA_API_KEY;
 
 document.addEventListener('DOMContentLoaded', function() {
