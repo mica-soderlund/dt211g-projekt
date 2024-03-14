@@ -226,6 +226,17 @@ h2 {
           box-shadow: 0 0 20px rgba(8, 0, 255, 0.6);
         }
       }
+
+      button#clearButton {
+        font-family: base.$breadfont;
+        border-radius: 30px;
+        box-shadow: 0 0 15px rgba(134, 120, 176, 0.4);
+
+        &:hover {
+            background: linear-gradient(145deg, #d0d7db, rgb(50, 52, 80));
+            box-shadow: 0 0 20px rgba(233, 233, 239, 0.742);
+          }
+      }
       
       .imageRotateHorizontal {
         display: block; 

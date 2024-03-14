@@ -5,15 +5,25 @@ require('dotenv').config();
 const nasaApiKey = process.env.VITE_NASA_API_KEY;
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Lägger till en eventlyssnare på sökknappen kopplat till API:er
-    document.getElementById('searchButton').addEventListener('click', function() {
-        const searchQuery = document.getElementById('searchInput').value.trim();
+    const searchButton = document.getElementById('searchButton');
+    const clearButton = document.getElementById('clearButton'); 
+    const searchInput = document.getElementById('searchInput');
+
+    // Eventlyssnare för sökknappen
+    searchButton.addEventListener('click', function() {
+        const searchQuery = searchInput.value.trim();
         if (searchQuery) {
-            // Hämtar Wikipedia-information baserat på söktermen
-            fetchWikipediaInfo(searchQuery); 
+            fetchWikipediaInfo(searchQuery);
+            fetchImages(searchQuery);
         }
     });
+
+    // Eventlyssnare för "Clear"-knappen i sök
+    clearButton.addEventListener('click', function() {
+        clearSearchResults();
+    });
 });
+
 
 //AJAX Funktion för att hämta information från Wikipedia och visa sammanfattning direkt på sidan
 function fetchWikipediaInfo(searchTerm) {
@@ -58,15 +68,27 @@ function fetchImages(objectName) {
             // rubrik för bilderna baserat på söktermen
             const imageTitle = `<h2>NASA Images of ${objectName}</h2>`;
 
-            // Skapar HTML-kod för bilderna och uppdaterar sidan med dessa
-            const imagesHTML = images.map(item => 
-                `<img src="${item.links[0].href}" alt="Image of ${objectName}" style="max-width: 100%; margin-top: 10px; border-radius: 10px;">`).join('');
+            // Skapar HTML-kod för bilderna inklusive bildtexter
+            const imagesHTML = images.map(item => {
+                const imageInfo = item.data[0]; 
+                return `<div class="image-container">
+                            <img src="${item.links[0].href}" alt="${imageInfo.title}" style="max-width: 100%; margin-top: 10px; border-radius: 10px;">
+                            <p><strong>${imageInfo.title}</strong> (${imageInfo.date_created.split('T')[0]})</p>
+                            <p>${imageInfo.description}</p>
+                        </div>`;
+            }).join('');
 
-            // Kombinerar rubriken m bilderna för en samlad presentation
+            // Kombinerar rubriken med bilderna för en samlad presentation
             const imagesElement = document.getElementById('planetImages');
             imagesElement.innerHTML = imageTitle + imagesHTML;
         })
         .catch(error => console.error('Error:', error));
 }
 
+// Funktion för att rensa sökresultaten och återställa ursprungligt innehåll
+function clearSearchResults() {
+    document.getElementById('planetInfo').innerHTML = '<h2>Still curious About Space?</h2> <h3> Make a new search! </h3>';
+    document.getElementById('planetImages').innerHTML = '';
+    document.getElementById('searchInput').value = ''; // Rensar sökfältet
+}
 
