@@ -37,3 +37,20 @@
     0% { transform: rotateY(0deg); }
     100% { transform: rotateY(360deg); }
 }
+
+
+//ANIMATION GLÖDANDE RUBRIK PÅ "ABOUT US"
+@keyframes glowingText {
+  0%, 100% {
+    color: #ab35ff;
+    text-shadow: 0 0 5px #ab35ff, 0 0 10px #ab35ff, 0 0 15px #ab35ff, 0 0 20px #ab35ff, 0 0 35px #ab35ff, 0 0 40px #ab35ff, 0 0 50px #ab35ff, 0 0 75px #ab35ff;
+  }
+  50% {
+    color: #009dff;
+    text-shadow: 0 0 5px #009dff, 0 0 10px #009dff, 0 0 15px #009dff, 0 0 20px #009dff, 0 0 35px #009dff, 0 0 40px #009dff, 0 0 50px #009dff, 0 0 75px #009dff;
+  }
+}
+
+.glowing-title {
+  animation: glowingText 5s infinite alternate ease-in-out;
+}
