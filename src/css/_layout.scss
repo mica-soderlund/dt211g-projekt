@@ -1,5 +1,26 @@
-
 @use 'base';
+
+/* Utgår från darkmode. Darkmode kommer i en media query */
+body {
+    background-color: base.$darkmode-background;
+    font-family: base.$breadfont;
+
+    /*BAKGRUNDSBILD*/
+    .wrapper {
+        min-height: 100vh; // Säkerställer att wrappern täcker hela höjden
+        background-image: url('/bilder/background_small.webp'); // Standardbakgrund
+        background-size: cover; // Täcker hela området
+        background-position: center; // Centrerar bilden
+        
+        // Anpassar bakgrundsbilden baserat på skärmstorlek med media queries
+        @media (min-width: 701px) and (max-width: 1200px) {
+          background-image: url('/bilder/background_small.webp');
+        }
+        @media (min-width: 1201px) {
+          background-image: url('/bilder/background_large.jpg');
+        }
+      }
+}
 
 /* HEADER */
 header {
@@ -17,17 +38,18 @@ header {
         /* Specifikt för landing page: */
         img#logotyp {
             max-width: 40%;
-            width: 200px; /* För Firefox */
+            width: 200px; 
             margin: 0.5em;
             position: relative;
             z-index: 2;
         }
     }
-    /* DESKTOP NAV */
+    /* DESKTOP-NAVIGERING */
     nav.desktop {
         width: 56%;
 
         ul {
+            /* Lista ska också bli flex så den kan spridas ut lite, som en menyrad*/
             list-style-type: none;
             display: flex;
             justify-content: space-between;
@@ -36,22 +58,24 @@ header {
             @include base.transition;
 
             &:hover {
-                /* hover-effekt så meny fpr mörkare bakgrund */
+                /* Gör hover-effekt där menyraden får mörkare bakgrund */
                 background-color: rgba(0, 0, 0, 0.2);
             }
         }
         .desktop-menu-item {
+            /* Själva li */
             font-family: base.$accentfont;
             font-size: 1.1em;
             a {
-                /* Länkarna i list */
+                /* Länkarna i list items */
                 text-decoration: none;
-                color: base.$lightmode-background;
+                color: base.$lightmode-text;
                 padding: 0.8em;
-                position: relative; 
+                position: relative; /* För att strecken under ska ha pos: absolute */
                 text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
             }
             a:after {
+                /* Gör streck under länkarna */
                 content: '';
                 width: 0%;
                 height: 3px;
@@ -62,9 +86,11 @@ header {
                 @include base.transition;
             }
             a:hover:after {
+                /* Visa strecket vid hover */
                 width: 100%;
             }
             a[aria-current='page']:after {
+                /* Statiskt streck under den länk som hör till sidan man befinner sig på */
                 content: '';
                 width: 100%;
                 height: 3px;
@@ -75,11 +101,12 @@ header {
             }
         }
     }
-    /* MOBILe nav  */
+    /* MOBILMENY */
     div.mobile-menu {
         /* Dölj i desktopläge */
         display: none;
         .burger-button {
+            /* Button som omger burger bars */
             border: none;
             cursor: pointer;
             background-color: rgba(0, 0, 0, 0);
@@ -89,7 +116,7 @@ header {
             z-index: 2;
 
             &:hover .burger-bar {
-                background-color: lighten(base.$lightmode-green, 10%);
+                background-color: lighten(base.$lightmode-text, 10%);
             }
         }
         .burger-bar {
@@ -101,14 +128,13 @@ header {
             @include base.transition;
         }
 
-        /* Aktiv hamburger */
+        /* AKTIV HAMBURGARE */
         .burger-button.active .burger-bar {
-            background-color: base.$lightmode-green;
+            background-color: base.$lightmode-text;
         }
         .burger-button.active:hover .burger-bar {
-            background-color: lighten(base.$lightmode-green, 10%);
+            background-color: lighten(base.$lightmode-text, 10%);
         }
-        /* Rotera första och tredje, dölj mittersta */
         .burger-button.active .burger-bar:first-child {
             transform: translateY(8px) rotate(225deg);
         }
@@ -138,21 +164,23 @@ header {
                     margin-top: 3em;
                 }
                 a {
-                    color: base.$lightmode-green;
+                    color: base.$lightmode-text;
                     position: relative;
                     padding: 0.5em 0;
                 }
                 a[aria-current='page']:after {
+                    /* Statiskt streck under nuvarande sida  */
                     content: '';
                     width: 100%;
                     height: 3px;
-                    background-color: base.$lightmode-green;
+                    background-color: base.$lightmode-text;
                     position: absolute;
                     bottom: 0;
                     left: 0;
                 }
             }
         }
+        /* Visas när den är aktiv */
         nav.mobile-menu-items.active {
             top: 0;
             z-index: 1;
@@ -160,39 +188,83 @@ header {
     }
 }
 
+h1 {
 
-// Definiera några grundläggande variabler för din design
-$background-color: #0a0a22;
-$text-color: #fff;
-$highlight-color: #ffffff;
-
-body {
-  background-color: $background-color;
-  color: $text-color;
-  font-family: Montserrat, Helvetica, sans-serif;
+    font-family: base.$headingfont;
+    letter-spacing: 1;
+    color: base.$lightmode-text;
 }
 
-h1, h2 {
-  color: $highlight-color;
+h2 {
+
+    font-family: base.$headingfont;
+    letter-spacing: 1;
+    color: base.$lightmode-text;
 }
 
-section {
-  margin-bottom: 20px;
+/* Sätt maxbredd på allt textinnehåll  */
+.subtitle {
+    font-weight: 500;
+    color: base.$lightmode-text;
+    font-size: 1.0em;
+    margin-bottom: 5rem;
+    margin-top: 5rem;
+    width: fit-content;
+    margin: auto;
+    p {
+        max-width: 35em;
+    }
+    p:not(.no-top-margin) {
+        margin-top: 2em;
+    }
 }
 
-#apod-content, #satellite-content {
-  margin-top: 10px;
+/* Sökfunktionen */
+.search-container {
+    width: 70%;
+    margin: 1em auto;
+
+    label[for='search'] {
+        display: block;
+    }
+    input[type='search'] {
+        width: 80%;
+        padding: 0.5em;
+        border-radius: 12px;
+        font-family: base.$breadfont;
+        border-width: 1px;
+        border-color: base.$lightmode-text;
+        font-size: 0.9em;
+    }
+    .searchButton {
+        padding: 0.5em;
+        font-family: base.$breadfont;
+        border-radius: 10px;
+        background-color: base.$lightmode-text;
+        border: none;
+        color: white;
+        cursor: pointer;
+        @include base.transition;
+        font-size: 0.9em;
+
+        &:hover {
+            background-color: lighten(base.$lightmode-text, 10%);
+        }
+    }
 }
 
-#background img {
-    right: 0;
-    top: 0;
-    bottom: 0;
-    height: 100%;
-    min-height: 100vh;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    object-fit: cover;
-    z-index: -1;
-    filter: brightness(30%)
+
+/* FOOTER */
+footer {
+    background-color: base.$lightmode-footer-bg;
+    /* Text  */
+    p {
+        color: base.$lightmode-text;
+        text-decoration: dotted underline 2px;
+        width: fit-content;
+        margin: auto;
+        padding-bottom: 1em;
+    }
 }
+
+

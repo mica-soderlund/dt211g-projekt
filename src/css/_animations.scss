@@ -1,0 +1,25 @@
+
+//ANIMATION STJÄRNFALL
+
+// Definiera animationen med keyframes
+@keyframes diagonalFloat {
+    0%, 20% {
+      transform: translate(0, 0);
+    }
+    40%, 60% {
+      transform: translate(100vw, 100vh); // Flyttar bilden från övre vänstra hörnet till nedre högra hörnet av v
+    }
+    80%, 100% {
+      transform: translate(0, 0);
+    }
+  }
+  
+  // Tillämpa animationen på bilden
+  img.diagonal-float {
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: diagonalFloat 15s infinite alternate;
+    // Inställer animationen till att vara 10 sekunder lång, loopa oändligt och växla riktning med inbyggda pauser
+  }
+  

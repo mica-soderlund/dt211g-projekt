@@ -7,13 +7,13 @@
   <link href="/src/css/stylesheet.css" rel="stylesheet">  <!-- MÅSTE matcha kompilerad CSS-fil SASS -->
   <link rel="stylesheet" href="/src/css/main.scss" />
   <script src="/src/js/picture.js" type="module"></script>
-  <!--<link rel="icon" type="image/x-icon" href="/bilder/favicon.ico"> lägg till favicon /bilder/favicon.ico-->
+  <link rel="icon" type="image/x-icon" href="/bilder/favicon.ico"> 
 </head>
 <body>
     <div class="wrapper" id="landingpage">
     <header>
         <div class="header-flex">
-            <!--<a href='/'><img src="...../.svg" alt="Logotyp" id="logotyp">  lägg till logotyp .svg -->
+            <a href='/'><img src="/bilder/logotyp.png" alt="Logotyp" id="logotyp"> 
             </a>
             <!-- header-nav desktop -->
             <nav class="desktop">
@@ -59,13 +59,17 @@
 
     </header>
     <main>
-        <br><br><br><br><br><br>
+    <!--SCSS animation- stjärnfall-->
+    <img src="/bilder/star.jpg" class="diagonal-float" alt="Floating Star">
+        <br><br><br><br><br><br>    
+        <span class="subtitle">
 <h1>Astronomy Picture of the Day from Nasa</h1>
+
         <section id="apod">
             <h2>x</h2>
             <div id="apod-content"></div>
         </section>
-
+        </span>
     </main>
     <br><br><br><br><br><br>
     <footer>

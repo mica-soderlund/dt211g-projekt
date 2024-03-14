@@ -59,3 +59,5 @@ function fetchImages(objectName) {
         })
         .catch(error => console.error('Error:', error));
 }
+
+
