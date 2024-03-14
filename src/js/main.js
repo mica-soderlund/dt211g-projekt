@@ -4,9 +4,8 @@ require('dotenv').config();
 //  NASA API-nyckel via .env
 const nasaApiKey = process.env.VITE_NASA_API_KEY;
 
-
 document.addEventListener('DOMContentLoaded', function() {
-    // Lägger till en eventlyssnare på sökknappen
+    // Lägger till en eventlyssnare på sökknappen kopplat till API:er
     document.getElementById('searchButton').addEventListener('click', function() {
         const searchQuery = document.getElementById('searchInput').value.trim();
         if (searchQuery) {
@@ -32,7 +31,10 @@ function fetchWikipediaInfo(searchTerm) {
                 const wikipediaUrl = `https://en.wikipedia.org/?curid=${pageId}`;
                 // Hämtar elementet där informationen ska visas och uppdaterar det med Wikipedia-information
                 const infoElement = document.getElementById('planetInfo');
-                infoElement.innerHTML = `<h2>${pageTitle}</h2><p>${extract}</p><p>Read more on <a href="${wikipediaUrl}" target="_blank">Wikipedia</a>.</p>`;
+                infoElement.innerHTML = 
+                // rubrik baserat på söktermen
+                `<h2>${pageTitle}</h2><p>${extract}</p>
+                <p>Read more on <a href="${wikipediaUrl}" target="_blank">Wikipedia</a>.</p>`;
                 // Hämtar bilder relaterade till sökningen
                 fetchImages(searchTerm); 
             } else {
@@ -52,10 +54,17 @@ function fetchImages(objectName) {
         .then(response => response.json())
         .then(data => {
             const images = data.collection.items.filter(item => item.links).slice(0, 3);
+             
+            // rubrik för bilderna baserat på söktermen
+            const imageTitle = `<h2>NASA Images of ${objectName}</h2>`;
+
             // Skapar HTML-kod för bilderna och uppdaterar sidan med dessa
-            const imagesHTML = images.map(item => `<img src="${item.links[0].href}" alt="Image of ${objectName}" style="max-width: 100%; margin-top: 10px;">`).join('');
+            const imagesHTML = images.map(item => 
+                `<img src="${item.links[0].href}" alt="Image of ${objectName}" style="max-width: 100%; margin-top: 10px; border-radius: 10px;">`).join('');
+
+            // Kombinerar rubriken m bilderna för en samlad presentation
             const imagesElement = document.getElementById('planetImages');
-            imagesElement.innerHTML = imagesHTML;
+            imagesElement.innerHTML = imageTitle + imagesHTML;
         })
         .catch(error => console.error('Error:', error));
 }

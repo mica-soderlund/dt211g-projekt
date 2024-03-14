@@ -14,7 +14,7 @@ function fetchAPOD() {
         .catch(error => console.error('Error fetching APOD:', error));
 }
 
-// Funktion för att visa APOD-data.
+// Funktion för att visa APOD-dat samt stylin för bild och text
 function displayAPOD(data) {
     const apodElement = document.getElementById('apod');
     if (apodElement) {
@@ -24,6 +24,6 @@ function displayAPOD(data) {
             <p>${data.explanation}</p>
         `;
     } else {
-        console.error('Elementet "apod" hittades inte i DOM.');
+        console.error('Elementet "apod" could not be found.');
     }
 }
