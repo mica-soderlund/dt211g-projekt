@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 //AJAX Funktion för att hämta information från Wikipedia och visa sammanfattning direkt på sidan
 function fetchWikipediaInfo(searchTerm) {
-    // URL för Wikipedia-sökning för att hämta sammanfattning
+    // URL för engelskWikipedia-sökning för att hämta sammanfattning
     const url = `https://en.wikipedia.org/w/api.php?action=query&prop=extracts&exintro&titles=${encodeURIComponent(searchTerm)}&format=json&origin=*`;
 
     fetch(url)
@@ -48,7 +48,7 @@ function fetchWikipediaInfo(searchTerm) {
                 // Hämtar bilder relaterade till sökningen
                 fetchImages(searchTerm); 
             } else {
-                alert('No Wikipedia summary was found.');
+                alert('No Wikipedia summary was found. Try searching in English.');
             }
         })
         .catch(error => {
