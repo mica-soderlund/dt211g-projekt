@@ -32,7 +32,7 @@ function fetchWikipediaInfo(searchTerm) {
                 const wikipediaUrl = `https://en.wikipedia.org/?curid=${pageId}`;
                 // Hämtar elementet där informationen ska visas och uppdaterar det med Wikipedia-information
                 const infoElement = document.getElementById('planetInfo');
-                infoElement.innerHTML = `<h3>${pageTitle}</h3><p>${extract}</p><p>Read more on <a href="${wikipediaUrl}" target="_blank">Wikipedia</a>.</p>`;
+                infoElement.innerHTML = `<h2>${pageTitle}</h2><p>${extract}</p><p>Read more on <a href="${wikipediaUrl}" target="_blank">Wikipedia</a>.</p>`;
                 // Hämtar bilder relaterade till sökningen
                 fetchImages(searchTerm); 
             } else {

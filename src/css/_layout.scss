@@ -191,6 +191,7 @@ header {
 h1 {
 
     font-family: base.$headingfont;
+    text-align: center;
     letter-spacing: 1;
     color: base.$lightmode-text;
 }
@@ -198,73 +199,114 @@ h1 {
 h2 {
 
     font-family: base.$headingfont;
+    text-align: center;
     letter-spacing: 1;
     color: base.$lightmode-text;
 }
 
 /* Sätt maxbredd på allt textinnehåll  */
 .subtitle {
+    text-align: center;
     font-weight: 500;
     color: base.$lightmode-text;
     font-size: 1.0em;
     margin-bottom: 5rem;
     margin-top: 5rem;
-    width: fit-content;
-    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; // Säkerställer att .subtitle tar upp hela bredden
+
+    & > * {
+        max-width: 35em; // Sätter en maxbredd på allt direkt innehåll
+        margin: 0 auto; // Centrerar innehållet
+    }
+
     p {
-        max-width: 35em;
-    }
-    p:not(.no-top-margin) {
-        margin-top: 2em;
-    }
-}
-
-/* Sökfunktionen */
-.search-container {
-    width: 70%;
-    margin: 1em auto;
-
-    label[for='search'] {
-        display: block;
-    }
-    input[type='search'] {
-        width: 80%;
-        padding: 0.5em;
-        border-radius: 12px;
-        font-family: base.$breadfont;
-        border-width: 1px;
-        border-color: base.$lightmode-text;
-        font-size: 0.9em;
-    }
-    .searchButton {
-        padding: 0.5em;
-        font-family: base.$breadfont;
-        border-radius: 10px;
-        background-color: base.$lightmode-text;
-        border: none;
-        color: white;
-        cursor: pointer;
-        @include base.transition;
-        font-size: 0.9em;
-
-        &:hover {
-            background-color: lighten(base.$lightmode-text, 10%);
+        text-align: center;
+        &:not(.no-top-margin) {
+            margin-top: 2em;
         }
     }
 }
 
 
+/* SÖKFUNKTIONEN - SEARCH */
+    .search-container {
+        width: 75%;
+        margin: 2em auto;
+        text-align: center;
+      }
+      
+      input[type='text']#searchInput { 
+        width: 60%;
+        padding: 0.8em;
+        border-radius: 30px;
+        font-family: base.$breadfont;
+        border: none;
+        outline: none;
+        box-shadow: 0 0 15px rgba(174, 121, 240, 0.4);
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+        font-size: 1.1em;
+        transition: all 0.3s ease;
+      
+        &:focus {
+          box-shadow: 0 0 15px rgba(174, 121, 240, 0.4);
+        }
+      }
+      
+      button#searchButton { 
+        padding: 0.8em 1.5em;
+        font-family: base.$breadfont;
+        border-radius: 30px;
+        background: linear-gradient(145deg, #985ad2, #1b9aaa);
+        border: none;
+        color: #ffffff;
+        cursor: pointer;
+        font-size: 1.1em;
+        margin-left: -50px;
+        box-shadow: 0 0 15px rgba(134, 120, 176, 0.4);
+        transition: all 0.3s ease;
+      
+        &:hover {
+          background: linear-gradient(145deg, #3b366f, rgb(50, 52, 80));
+          box-shadow: 0 0 20px rgba(8, 0, 255, 0.6);
+        }
+      }
+      
+
+    
+
+
 /* FOOTER */
 footer {
-    background-color: base.$lightmode-footer-bg;
-    /* Text  */
-    p {
-        color: base.$lightmode-text;
-        text-decoration: dotted underline 2px;
-        width: fit-content;
-        margin: auto;
-        padding-bottom: 1em;
-    }
+    background-color: #0e353a; /* Matchar sökknappens bakgrundsfärg */
+    text-align: center;
+    padding: em 0;
 }
+
+footer p {
+    color: #ffffff; 
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+}
+
+footer p:hover {
+    color: #985ad2; 
+    cursor: pointer;
+}
+
+footer a {
+    color: #ffffff; 
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #985ad2; 
+}
+
 
 
