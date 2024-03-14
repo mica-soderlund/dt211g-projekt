@@ -23,171 +23,145 @@ body {
 }
 
 /* HEADER */
-header {
-    width: 100%;
-    position: relative;
-    img {
-        width: 100%;
+$header-height: 60px;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: $header-height;
+  padding: 0 20px;
+  background: #121212; // En mörk bakgrundsfärg för futuristisk känsla
+
+  .desktop-menu ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin: 0 15px;
+
+      a {
+        text-decoration: none;
+        color: #ffffff; // Vit text för kontrast
+        &:hover {
+          color: #0099ff; // Lägg till en hover-effekt
+        }
+      }
     }
-    .header-flex {
-        display: flex;
-        width: 100%;
-        justify-content: space-between;
-        position: absolute;
-        top: 0;
-        /* Specifikt för landing page: */
-        img#logotyp {
-            max-width: 40%;
-            width: 200px; 
-            margin: 0.5em;
-            position: relative;
-            z-index: 2;
-        }
+  }
+
+  .mobile-menu-icon {
+    display: none; // Dölj som standard
+    cursor: pointer;
+    span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: #ffffff;
+      margin: 5px 0;
     }
-    /* DESKTOP-NAVIGERING */
-    nav.desktop {
-        width: 56%;
+  }
 
-        ul {
-            /* Lista ska också bli flex så den kan spridas ut lite, som en menyrad*/
-            list-style-type: none;
-            display: flex;
-            justify-content: space-between;
-            padding: 0.5em 1em 0.5em 0.5em;
-            border-radius: 10px 0 0 10px;
-            @include base.transition;
+  .mobile-menu {
+    position: fixed;
+    top: $header-height;
+    right: 0;
+    width: 250px;
+    background: #121212;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    padding: 20px 0;
 
-            &:hover {
-                /* Gör hover-effekt där menyraden får mörkare bakgrund */
-                background-color: rgba(0, 0, 0, 0.2);
-            }
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        padding: 15px 20px;
+
+        a {
+          text-decoration: none;
+          color: #ffffff; 
+          display: block;
         }
-        .desktop-menu-item {
-            /* Själva li */
-            font-family: base.$accentfont;
-            font-size: 1.1em;
-            a {
-                /* Länkarna i list items */
-                text-decoration: none;
-                color: base.$lightmode-text;
-                padding: 0.8em;
-                position: relative; /* För att strecken under ska ha pos: absolute */
-                text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
-            }
-            a:after {
-                /* Gör streck under länkarna */
-                content: '';
-                width: 0%;
-                height: 3px;
-                background-color: base.$lightmode-background;
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                @include base.transition;
-            }
-            a:hover:after {
-                /* Visa strecket vid hover */
-                width: 100%;
-            }
-            a[aria-current='page']:after {
-                /* Statiskt streck under den länk som hör till sidan man befinner sig på */
-                content: '';
-                width: 100%;
-                height: 3px;
-                background-color: base.$lightmode-background;
-                position: absolute;
-                bottom: 0;
-                left: 0;
-            }
-        }
+      }
     }
-    /* MOBILMENY */
-    div.mobile-menu {
-        /* Dölj i desktopläge */
-        display: none;
-        .burger-button {
-            /* Button som omger burger bars */
-            border: none;
-            cursor: pointer;
-            background-color: rgba(0, 0, 0, 0);
-            position: relative;
-            top: 1.5em;
-            right: 2em;
-            z-index: 2;
-
-            &:hover .burger-bar {
-                background-color: lighten(base.$lightmode-text, 10%);
-            }
-        }
-        .burger-bar {
-            display: block;
-            width: 40px;
-            height: 3px;
-            margin: 5px;
-            background-color: black;
-            @include base.transition;
-        }
-
-        /* AKTIV HAMBURGARE */
-        .burger-button.active .burger-bar {
-            background-color: base.$lightmode-text;
-        }
-        .burger-button.active:hover .burger-bar {
-            background-color: lighten(base.$lightmode-text, 10%);
-        }
-        .burger-button.active .burger-bar:first-child {
-            transform: translateY(8px) rotate(225deg);
-        }
-        .burger-button.active .burger-bar:nth-child(2) {
-            opacity: 0;
-        }
-        .burger-button.active .burger-bar:last-child {
-            transform: translateY(-8px) rotate(-225deg);
-        }
-        /* Ul-element får regler och skickas ut till höger för att döljas när den är inaktiv */
-        nav.mobile-menu-items {
-            height: fit-content;
-            width: 100%;
-            border-radius: 0 0 50% 50%;
-            position: fixed;
-            left: 0;
-            top: -505%;
-            background-color: base.$lightmode-background;
-            @include base.transition;
-
-            .mobile-menu-item {
-                font-family: base.$accentfont;
-                font-size: 1.1em;
-
-                margin: 5em 50%;
-                li {
-                    margin-top: 3em;
-                }
-                a {
-                    color: base.$lightmode-text;
-                    position: relative;
-                    padding: 0.5em 0;
-                }
-                a[aria-current='page']:after {
-                    /* Statiskt streck under nuvarande sida  */
-                    content: '';
-                    width: 100%;
-                    height: 3px;
-                    background-color: base.$lightmode-text;
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                }
-            }
-        }
-        /* Visas när den är aktiv */
-        nav.mobile-menu-items.active {
-            top: 0;
-            z-index: 1;
-        }
-    }
+  }
 }
 
+// Lägger till en media query för att hantera visningen på små skärmar
+@media (max-width: 768px) {
+  .mobile-menu-icon {
+    display: block;
+  }
+  .desktop-menu {
+    display: none; // Dölj desktopmenyn på små skärmar
+  }
+}
+
+    .desktop-menu ul {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    
+        li {
+          margin: 0 15px;
+    
+          a {
+            text-decoration: none;
+            color: #ffffff; 
+            &:hover {
+              color: #0099ff; //  hover-effekt
+            }
+          }
+        }
+      }
+    
+      .mobile-menu-icon {
+        display: none; // Dölj som standard
+        cursor: pointer;
+        span {
+          display: block;
+          width: 25px;
+          height: 3px;
+          background: #ffffff;
+          margin: 5px 0;
+        }
+      }
+    
+      .mobile-menu {
+        position: fixed;
+        top: $header-height;
+        right: 0;
+        width: 250px;
+        background: #121212;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        padding: 20px 0;
+    
+        ul {
+          list-style: none;
+          padding: 0;
+    
+          li {
+            padding: 15px 20px;
+    
+            a {
+              text-decoration: none;
+              color: #ffffff; // Vit text även här
+              display: block;
+            }
+          }
+        }
+      }
+    
+    
+
+
+//STYLING FÖR RUBRIKER
 h1 {
 
     font-family: base.$headingfont;
@@ -204,7 +178,7 @@ h2 {
     color: base.$lightmode-text;
 }
 
-/* Sätt maxbredd på allt textinnehåll  */
+/* Sätt maxbredd på allt textinnehåll som genereras via JS-API */
 .subtitle {
     text-align: center;
     font-weight: 500;
@@ -231,7 +205,7 @@ h2 {
 }
 
 
-/* SÖKFUNKTIONEN - SEARCH */
+/* SÖKFUNKTIONEN - SEARCH - STYLING */
     .search-container {
         width: 75%;
         margin: 2em auto;
@@ -270,7 +244,7 @@ h2 {
         transition: all 0.3s ease;
       
         &:hover {
-          background: linear-gradient(145deg, #3b366f, rgb(50, 52, 80));
+          background: linear-gradient(145deg, #0099ff, rgb(50, 52, 80));
           box-shadow: 0 0 20px rgba(8, 0, 255, 0.6);
         }
       }
@@ -279,9 +253,9 @@ h2 {
     
 
 
-/* FOOTER */
+/* FOOTER STYLING */
 footer {
-    background-color: #0e353a; /* Matchar sökknappens bakgrundsfärg */
+    background-color: #121212; /* Matchar sökknappens bakgrundsfärg */
     text-align: center;
     padding: em 0;
 }
@@ -294,7 +268,7 @@ footer p {
 }
 
 footer p:hover {
-    color: #985ad2; 
+    color: #0099ff; 
     cursor: pointer;
 }
 

@@ -1,17 +1,17 @@
 
 //Variabler
-/* Light Mode: */
+// Light Mode: 
 $lightmode-background: #10141e;
 $lightmode-text: #d6ded6;
 $lightmode-footer-bg: #010101;
 
-/* Dark mode: */
+// Dark mode:
 $darkmode-background: #10141e;
 $darkmode-text: #dcddde;
 $darkmode-mid: #9da0a5;
 $darkmode-footer-bg: #dcddde;
 
-/* Olika fonts för olika delar text */
+// Olika fonts för olika delar text 
 $breadfont: Montserrat, Helvetica, sans-serif;
 $accentfont: Inconsolata, Helvetica, sans-serif;
 $headingfont: Montserrat, Helvetica, sans-serif;
@@ -19,7 +19,7 @@ $headingfont: Montserrat, Helvetica, sans-serif;
 
 //Mixins
 
-/* Mixin för transition med vendor prefixes (jag tror inte man behöver det, men är osäker, så de får vara med ändå) */
+// Mixin för transition med vendor prefixes 
 @mixin transition {
     transition: 0.8s ease;
     -webkit-transition: 0.8s ease;
@@ -27,7 +27,7 @@ $headingfont: Montserrat, Helvetica, sans-serif;
 }
 
 
-/* Mixin för att centrera saker  */
+// Mixin för att centrera 
 @mixin center($horizontal, $vertical) {
     @if $horizontal and $vertical {
         position: relative;

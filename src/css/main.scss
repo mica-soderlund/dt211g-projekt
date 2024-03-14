@@ -3,15 +3,14 @@
 @import 'layout';
 @import 'animations';
 
-// Visa mobilmenyn endast på små skärmar
-@media (max-width: 992px) {
-    div.mobile-menu {
-      display: block; // Visa mobilmenyn som standard på små skärmar
-    }
-    
-    nav.desktop {
-      display: none; // Dölj desktop-navigeringen
-    }
-  }
-
+    // MOBIL-NAV 
+    //media query för att hantera visningen på små skärmar
+    @media (max-width: 768px) {
+        .mobile-menu-icon {
+          display: block;
+        }
+        .desktop-menu {
+          display: none; // Dölj desktopmenyn på små skärmar
+        }
+      }
 

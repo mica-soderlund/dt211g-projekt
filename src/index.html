@@ -14,44 +14,34 @@
 <body>
     <div class="wrapper" id="landingpage">
     <header>
-        <div class="header-flex">
+        <div class="header">
             <a href='/'><img src="/bilder/logotyp.png" alt="Logotyp" id="logotyp"> 
             </a>
+
             <!-- header-nav desktop -->
-            <nav class="desktop">
+            <nav class="desktop-menu">
                 <ul>
-                    <li class="desktop-menu-item">
-                        <a aria-current='page' href='/src/index.html'>Start</a>
-                    </li>
-                    <li class="desktop-menu-item">
-                        <a href='/src/about.html'>Picture</a>
-                    </li>
-                    <li class="desktop-menu-item">
-                        <a href='/src/contact.html'>Contact</a>
-                    </li>
+                    <li><a href="/src/index.html">Start</a></li>
+                    <li><a href="/src/about.html">Picture</a></li>
+                    <li><a href="/src/contact.html">Contact</a></li>
                 </ul>
             </nav>
-            <!-- header-nav mobile hamburger-->
-            <div class="mobile-menu">
-                <button class="burger-button" aria-label="menyknapp">
-                    <span class="burger-bar"></span>
-                    <span class="burger-bar"></span>
-                    <span class="burger-bar"></span>
-                </button>
-                <nav class="mobile-menu-items">
-                    <ul>
-                            <li class="mobile-menu-item">
-                                <a aria-current='page' href='/src/index.html'>Start</a>
-                            </li>
-                            <li class="mobile-menu-item">
-                                <a href='/src/about.html'>Picture</a>
-                            </li>
-                            <li class="mobile-menu-item">
-                                <a href='/src/contact.html'>Kontakt</a>
-                            </li>
-                    </ul>
-                </nav>
+        
+            <!-- Mobilmeny (Hamburgerikon) -->
+            <div class="mobile-menu-icon" id="mobile-menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
+        
+            <!-- Mobilmeny (Navigationslänkar) -->
+            <nav class="mobile-menu" id="mobile-menu">
+                <ul>
+                    <li><a href="/src/index.html">Start</a></li>
+                    <li><a href="/src/about.html">Picture</a></li>
+                    <li><a href="/src/contact.html">Contact</a></li>
+                </ul>
+            </nav>
         </div>
     
 
@@ -64,6 +54,8 @@
 
         <br><br><br><br><br><br>
         <h1>Explore Space Now</h1><br>
+
+        <!--SÖKFUNKTIONEN FÖR JS-->
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="Search in Space...">
             <button id="searchButton">Search</button>
@@ -71,7 +63,7 @@
     <div class="subtitle">
         <section id="planetInfo">
             <h2>Space Information from Wikipedia</h2>
-            <!-- Information från sökningen visas här -->
+            <!-- WIKI-Information från sökningen visas här -->
         </section>
         <section id="planetImages">
             <h2>Space Images from NASA</h2>
@@ -80,7 +72,9 @@
     </div>
 
     </main>
-    <br><br><br><br><br><br>
+    <br><br><br>
+    <img src="/bilder/planet.ico" class="XX" alt="Spinning planet">
+    <br><br><br>
     <footer>
         <p>© 2024 Project Explore Space </p>
         <p>Background image by wirestock on <a href="https://www.freepik.com"> Freepik</a>
