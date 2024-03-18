@@ -49,6 +49,7 @@ body {
   }
   
   .mobile-menu {
+    display: none;
     position: fixed;
     top: $header-height;
     right: 0;
