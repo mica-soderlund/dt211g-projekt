@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', function() {
     fetchAPOD();
 });
 
+//JS för undersidan "Picture of the Day"
+
 // Funktion för att hämta "Picture of the Day" från NASA och visa den.
 function fetchAPOD() {
     // Använder miljövariabeln istället för en hårdkodad nyckel
