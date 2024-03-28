@@ -278,6 +278,22 @@ h2 {
   box-shadow: 0 0 15px rgba(134, 120, 176, 0.4);
 }
 
+
+.wiki-result{
+  background-color: rgba(255, 255, 255, 0.818); // Semi-transparent vit bakgrund
+  padding: 1em; 
+  border-radius: 10px; 
+  p {
+    color: #000000;
+  }
+  h2{
+    color: #000000;
+  }
+  h3{
+    color: #000000;
+  }
+}
+
 /* FOOTER STYLING */
 footer {
     background-color: rgba(18, 18, 18, 0.5); // Semi-transparent bakgrund
